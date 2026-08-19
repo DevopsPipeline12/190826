@@ -15,8 +15,11 @@ permissions:
 
 jobs:
   terraform:
-    name: Terraform
     runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout
@@ -26,7 +29,6 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Format Check
-        working-directory: ./terraform_project/environements
         run: terraform fmt -check -recursive
 
       - name: Azure Login
@@ -47,4 +49,3 @@ jobs:
       - name: Terraform Plan
         working-directory: ./terraform_project/environements
         run: terraform plan
-        # 
