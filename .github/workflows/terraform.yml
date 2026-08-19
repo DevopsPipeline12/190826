@@ -39,13 +39,13 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Terraform Init
-        working-directory: ./terraform_project/environements
+        working-directory: ./environements
         run: terraform init
 
       - name: Terraform Validate
-        working-directory: ./terraform_project/environements
+        working-directory: ./environement
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: ./terraform_project/environements
+        working-directory: ./environement
         run: terraform plan
